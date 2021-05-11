@@ -4,26 +4,26 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_one_attached :avatar
-  validates :user, presence: true, uniqueness: { case_sensitive: false }
+  has_one_attached :avatar,dependent: :destroy
   validate :validate_user
   attr_writer :login
 
   def login
-    @login || user || email
+    @login || self.user || self.email
   end
 
   def self.find_for_database_authentication(warden_conditions)
     conditions = warden_conditions.dup
     if login = conditions.delete(:login)
-      where(conditions.to_h).where(['lower(user) = :value OR lower(email) = :value',
-                                    { value: login.downcase }]).first
-    elsif conditions.key?(:user) || conditions.key?(:email)
+      where(conditions.to_h).where(["lower(user) = :value OR lower(email) = :value", { :value => login.downcase }]).first
+    elsif conditions.has_key?(:user) || conditions.has_key?(:email)
       where(conditions.to_h).first
     end
   end
 
   def validate_user
-    errors.add(:user, :invalid) if User.where(email: user).exists?
+    if User.where(email: user).exists?
+      errors.add(:user, :invalid)
+    end
   end
 end
