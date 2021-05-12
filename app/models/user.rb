@@ -5,7 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   # app/models/user.rb
 
-  has_many :groups
+  has_many :groups, dependent: :destroy
+  has_many :items, dependent: :destroy
   has_one_attached :avatar, dependent: :destroy
 
   validates :username, presence: true, uniqueness: { case_sensitive: false }
