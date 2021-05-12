@@ -5,8 +5,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   # app/models/user.rb
 
-  validates :username, presence: true, uniqueness: { case_sensitive: false }
+  has_many :groups
   has_one_attached :avatar, dependent: :destroy
+
+  validates :username, presence: true, uniqueness: { case_sensitive: false }
   validate :validate_username
   attr_writer :login
 

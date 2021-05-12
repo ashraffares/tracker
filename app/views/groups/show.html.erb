@@ -1,0 +1,23 @@
+<p>
+  <strong>Name:</strong>
+  <%= @group.name %>
+</p>
+
+<p>
+  <strong>Icon:</strong>
+  <%= @group.icon %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @group.user_id %>
+</p>
+
+<p>
+  <strong>Time:</strong>
+  <%= @group.created_at %>
+</p>
+
+
+<%= link_to 'Edit', edit_group_path(@group) %> |
+<%= link_to 'Back', groups_path %>
