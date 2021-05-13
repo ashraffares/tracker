@@ -10,6 +10,7 @@
       </ul>
     </div>
   <% end %>
+<%= form.select :group_id, Group.all.collect { |x| [x.name, x.id]}, {}%>
 
   <div class="field">
     <%= form.label :name %>
