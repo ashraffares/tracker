@@ -55,7 +55,6 @@ ActiveRecord::Schema.define(version: 2021_05_12_125047) do
   create_table "items", force: :cascade do |t|
     t.string "name", null: false
     t.float "amount", null: false
-    t.boolean "in_group", default: false
     t.bigint "user_id", null: false
     t.bigint "group_id"
     t.datetime "created_at", precision: 6, null: false

@@ -3,7 +3,6 @@ class CreateItems < ActiveRecord::Migration[6.1]
     create_table :items do |t|
       t.string :name, null: false
       t.float :amount, null: false
-      t.boolean :in_group, default: false
       t.references :user, null: false, foreign_key: true, index: true
       t.references :group, foreign_key: true, index:true
 
