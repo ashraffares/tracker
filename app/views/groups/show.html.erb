@@ -5,7 +5,7 @@
 
 <p>
   <strong>Icon:</strong>
-  <%= @group.icon %>
+  <%=image_tag @group.icon %>
 </p>
 
 <p>
@@ -17,7 +17,6 @@
   <strong>Time:</strong>
   <%= @group.created_at %>
 </p>
-
 
 <%= link_to 'Edit', edit_group_path(@group) %> |
 <%= link_to 'Back', groups_path %>

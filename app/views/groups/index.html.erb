@@ -15,7 +15,7 @@
     <% @groups.each do |group| %>
       <tr>
         <td><%= group.name %></td>
-        <td><%= group.icon %></td>
+        <td><%=image_tag(group.icon) %></td>
         <td><%= group.user_id %></td>
         <td><%= group.created_at %></td>
         <td><%= link_to 'Show', group %></td>
