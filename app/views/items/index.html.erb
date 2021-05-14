@@ -1,12 +1,12 @@
 <h1>Items</h1>
-
+<%=counter()%>
 <table>
   <thead>
     <tr>
       <th>Name</th>
       <th>Amount</th>
-      <th>User</th>
-      <th>Group</th>
+      <th>date</th>
+      <th>icon</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,8 +16,8 @@
       <tr>
         <td><%= item.name %></td>
         <td><%= item.amount %></td>
-        <td><%= item.user_id %></td>
-        <td><%= item.group_id %></td>
+        <td><%= item.created_at %></td>
+        <td><%=image_tag item.group.icon %></td>
         <td><%= link_to 'Show', item %></td>
         <td><%= link_to 'Edit', edit_item_path(item) %></td>
         <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
