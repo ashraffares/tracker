@@ -1,0 +1,26 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container-fluid">
+    <%= link_to 'Home', root_path,class:'navbar-brand' %>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+       
+      </ul>
+      <div class="d-flex navbar-nav">
+        <%if user_signed_in?%>
+            <%= link_to 'Edit Profile', edit_user_registration_path,class:'nav-link'%>
+            <%= link_to 'Sign Out', destroy_user_session_path,method: :delete,data: {confirm:'Are you sure?'},class:'nav-link'%>
+        <%else%>
+            <%= link_to 'Sign In', new_user_session_path,class:'nav-link'%>
+            <%= link_to 'Sign Up', new_user_registration_path,class:'nav-link'%>
+        <%end%>
+        <form class="d-flex">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-dark" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</nav>
