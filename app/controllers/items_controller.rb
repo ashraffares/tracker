@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!
   # GET /items or /items.json
   def index
-    @items = current_user.items.all.order('created_at DESC')
+    @items = current_user.items.where.not(group_id: nil).all.order('created_at DESC')
   end
 
   def external
