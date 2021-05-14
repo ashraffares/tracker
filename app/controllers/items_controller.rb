@@ -3,10 +3,12 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!
   # GET /items or /items.json
   def index
-    @items = current_user.items.all.order("created_at DESC")
+    @items = current_user.items.all.order('created_at DESC')
   end
 
   def external
+    @items = current_user.items.where(group_id: nil).all.order('created_at DESC')
+    render :index
   end
 
   # GET /items/1 or /items/1.json
@@ -27,7 +29,7 @@ class ItemsController < ApplicationController
     @item = current_user.items.build(item_params)
     respond_to do |format|
       if @item.save
-        format.html { redirect_to @item, notice: "Item was successfully created." }
+        format.html { redirect_to @item, notice: 'Item was successfully created.' }
         format.json { render :show, status: :created, location: @item }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -40,7 +42,7 @@ class ItemsController < ApplicationController
   def update
     respond_to do |format|
       if @item.update(item_params)
-        format.html { redirect_to @item, notice: "Item was successfully updated." }
+        format.html { redirect_to @item, notice: 'Item was successfully updated.' }
         format.json { render :show, status: :ok, location: @item }
       else
         format.html { render :edit, status: :unprocessable_entity }

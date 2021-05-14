@@ -10,7 +10,7 @@
       </ul>
     </div>
   <% end %>
-<%= form.select :group_id, Group.all.collect { |x| [x.name, x.id]}, {}%>
+<%= form.select :group_id, Group.all.collect { |x| [x.name, x.id]},{ :include_blank => true}%>
 
   <div class="field">
     <%= form.label :name %>
