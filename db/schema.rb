@@ -45,7 +45,6 @@ ActiveRecord::Schema.define(version: 2021_05_12_125047) do
 
   create_table "groups", force: :cascade do |t|
     t.string "name", null: false
-    t.string "icon", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
