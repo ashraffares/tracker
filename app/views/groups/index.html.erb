@@ -1,14 +1,21 @@
-<% @groups.each do |group| %>
-  <div class="d-flex flex-row justify-content-around w-50 shadow p-3 mb-3 bg-white rounded">
-    <div>
-      <%=image_tag group.icon.variant(resize:'100x100!'),class: 'rounded-circle' %>
-    </div>
-    <div class="">
-      <p class="text-muted"><%= group.name %></p>
-      <p class="text-muted"><%= group.created_at %></p>
-      <%= link_to 'Edit', edit_group_path(group),class:'btn btn-sm btn-outline-danger'%>
-      <%= link_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure?' },class:'btn btn-sm btn-outline-primary' %>
-    </div>
+<div class="d-flex flex-row">
+  <div class='w-50'>
+    <% @groups.each do |group| %>
+      <div class="d-flex flex-row justify-content-around  shadow p-3 mb-3 bg-white rounded">
+        <div>
+          <%=image_tag group.icon.variant(resize:'100x100!'),class: 'rounded-circle' %>
+        </div>
+        <div class="">
+          <p class="text-muted"><%= group.name %></p>
+          <p class="text-muted"><%= group.created_at %></p>
+          <%= link_to 'Edit', edit_group_path(group),class:'btn btn-sm btn-outline-danger'%>
+          <%= link_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure?' },class:'btn btn-sm btn-outline-primary' %>
+        </div>
+      </div>
+    <%end%>
   </div>
-<%end%>
+  <div class='w-50 text-center'>
+    <%= pie_chart @groups.group(:name).count%>
+  </div>
+</div>
 <%= link_to 'New Group', new_group_path %>
