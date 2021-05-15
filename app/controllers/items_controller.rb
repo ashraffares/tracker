@@ -4,11 +4,11 @@ class ItemsController < ApplicationController
   before_action :correct_user, only: %i[edit update destroy]
   # GET /items or /items.json
   def index
-    @items = current_user.items.where.not(group_id: nil).all.order('created_at DESC')
+    @items = current_user.items.where.not(group_id: nil).includes(:group, :user).all.order('created_at DESC')
   end
 
   def external
-    @items = current_user.items.where(group_id: nil).all.order('created_at DESC')
+    @items = current_user.items.where(group_id: nil).includes(:group, :user).order('created_at DESC')
     render :index
   end
 
