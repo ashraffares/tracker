@@ -1,25 +1,29 @@
 <div class="shadow p-2 mb-3 bg-white rounded">
-  <p class="text-muted">Gift credit: <%=counter()%><p>
+  <p class="text-muted">Gift credit: <%=counter(@items)%><p>
 </div>
 
-<% @items.each do |item| %>
-  <div class="d-flex flex-row justify-content-around w-50 shadow p-3 mb-3 bg-white rounded">
-    <div>
-      <%if item.group != nil%>
-        <%=image_tag item.group.icon.variant(resize:'100x100!'),class: 'rounded-circle'  %>
-      <%else%>
-        <%=image_tag('question_mark.jpg',width:'100',height:'100',class:'rounded-circle')%>
-      <%end%>
-    </div>
-    <div class="">
-      <p class="text-muted"><%= item.name %></p>
-      <p class="text-muted"><%= item.created_at %></p>
-      <%= link_to 'Edit', edit_item_path(item),class:'btn btn-sm btn-outline-primary'%>
-      <%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' },class:'btn btn-sm btn-outline-danger' %>
-    </div>
-    <div>
-        <p class="text-dark">Amount: <%= item.amount %></p>
-    </div>
-  </div>
-<%end%>
-<%= link_to 'New Item', new_item_path %>
+<div class="d-flex flex-row justify-content-center">
+  <div class=''>
+    <% @items.each do |item| %>
+      <div class="d-flex flex-row shadow p-3 mb-3 bg-white rounded">
+        <div>
+          <%if item.group != nil%>
+            <%=image_tag item.group.icon.variant(resize:'100x100!'),class: 'rounded-circle'  %>
+          <%else%>
+            <%=image_tag('question_mark.jpg',width:'100',height:'100',class:'rounded-circle')%>
+          <%end%>
+        </div>
+        <div class="">
+          <p class="text-muted"><%= item.name %></p>
+          <p class="text-muted"><%= item.created_at %></p>
+          <%= link_to 'Edit', edit_item_path(item),class:'btn btn-sm btn-outline-primary'%>
+          <%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' },class:'btn btn-sm btn-outline-danger' %>
+        </div>
+        <div>
+            <p class="text-dark">Amount: <%= item.amount %></p>
+        </div>
+      </div>
+    <%end%>
+    <%= link_to 'New Item', new_item_path %>
+  <div>
+</div>

@@ -1,7 +1,7 @@
 module ItemsHelper
-  def counter(recored = @item)
+  def counter(arr)
     c = 0
-    recored.each do |item|
+    arr.each do |item|
       c += item.amount
     end
     c

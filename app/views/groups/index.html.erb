@@ -1,7 +1,7 @@
-<div class="d-flex flex-row">
-  <div class='w-50'>
+<div class="d-flex flex-row justify-content-center mt-2">
+  <div class=''>
     <% @groups.each do |group| %>
-      <div class="d-flex flex-row justify-content-around  shadow p-3 mb-3 bg-white rounded">
+      <div class="d-flex flex-row shadow p-3 mb-3 bg-white rounded">
         <div>
           <%=image_tag group.icon.variant(resize:'100x100!'),class: 'rounded-circle' %>
         </div>
@@ -14,9 +14,6 @@
         </div>
       </div>
     <%end%>
-  </div>
-  <div class='w-50 text-center'>
-    <%= pie_chart @groups.group(:name).count%>
   </div>
 </div>
 <%= link_to 'New Group', new_group_path %>
