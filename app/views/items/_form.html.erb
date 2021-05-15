@@ -10,19 +10,22 @@
       </ul>
     </div>
   <% end %>
-<%= form.select :group_id, Group.all.collect { |x| [x.name, x.id]},{ :include_blank => true}%>
-
   <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.select :group_id, Group.all.collect { |x| [x.name, x.id]},{ :include_blank => 'Select group'},class:"form-control-sm form-control btn-outline-primary"%>
   </div>
+  <div class="card-body">
+    <div class="field">
+      <%= form.label :name %>
+      <%= form.text_field :name,class:'form-control'%>
+    
 
-  <div class="field">
-    <%= form.label :amount %>
-    <%= form.number_field :amount,step: :any %>
-  </div>
+    <div class="field">
+      <%= form.label :amount %>
+      <%= form.number_field :amount,step: :any,class:'form-control'  %>
+    </div>
 
-  <div class="actions">
-    <%= form.submit %>
+    <div class="actions">
+      <%= form.submit class:'btn btn-primary btn-sm mt-2' %>
+    </div>
   </div>
 <% end %>
