@@ -11,17 +11,19 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
+  <div class="card-body">
+    <div class="field">
+      <%= form.label :name %>
+      <%= form.text_field :name,class:'form-control'  %>
+    </div>
 
-  <div class="field">
-    <%= form.label :icon %>
-    <%= form.file_field :icon %>
-  </div>
+    <div class="field">
+      <%= form.label :icon %>
+      <%= form.file_field :icon,class:'form-control'  %>
+    </div>
 
-  <div class="actions">
-    <%= form.submit %>
+    <div class="actions">
+      <%= form.submit class:'btn btn-primary btn-sm mt-2' %>
+    </div>
   </div>
 <% end %>
