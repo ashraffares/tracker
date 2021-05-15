@@ -30,11 +30,11 @@ class ItemsController < ApplicationController
     @item = current_user.items.build(item_params)
     respond_to do |format|
       if @item.save
-        format.html { redirect_to @item, notice: 'Item was successfully created.' }
+        format.html { redirect_to items_path, notice: 'Item was successfully created.' }
         format.json { render :show, status: :created, location: @item }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @item.errors, status: :unprocessable_entity }
+        format.json { render json: items_path.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -43,11 +43,11 @@ class ItemsController < ApplicationController
   def update
     respond_to do |format|
       if @item.update(item_params)
-        format.html { redirect_to @item, notice: 'Item was successfully updated.' }
+        format.html { redirect_to items_path, notice: 'Item was successfully updated.' }
         format.json { render :show, status: :ok, location: @item }
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @item.errors, status: :unprocessable_entity }
+        format.json { render json: items_path.errors, status: :unprocessable_entity }
       end
     end
   end
