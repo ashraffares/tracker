@@ -8,8 +8,8 @@
         <div>
           <p class="text-muted"><%= group.name %></p>
           <p class="text-muted"><%= group.created_at %></p>
+           <%= link_to 'group_items', group_path(group),class:'btn btn-sm btn-outline-info'%>
           <%if current_user == group.user%>
-            <%= link_to 'group_items', group_path(group),class:'btn btn-sm btn-outline-info'%>
             <%= link_to 'Edit', edit_group_path(group),class:'btn btn-sm btn-outline-primary'%>
             <%= link_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure?' },class:'btn btn-sm btn-outline-danger' %>
           <%end%>
