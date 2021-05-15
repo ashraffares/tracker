@@ -8,8 +8,8 @@
         <div class="">
           <p class="text-muted"><%= group.name %></p>
           <p class="text-muted"><%= group.created_at %></p>
-          <%= link_to 'Edit', edit_group_path(group),class:'btn btn-sm btn-outline-danger'%>
-          <%= link_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure?' },class:'btn btn-sm btn-outline-primary' %>
+          <%= link_to 'Edit', edit_group_path(group),class:'btn btn-sm btn-outline-primary'%>
+          <%= link_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure?' },class:'btn btn-sm btn-outline-danger' %>
         </div>
       </div>
     <%end%>

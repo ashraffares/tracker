@@ -14,8 +14,8 @@
     <div class="">
       <p class="text-muted"><%= item.name %></p>
       <p class="text-muted"><%= item.created_at %></p>
-      <%= link_to 'Edit', edit_item_path(item),class:'btn btn-sm btn-outline-danger'%>
-      <%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' },class:'btn btn-sm btn-outline-primary' %>
+      <%= link_to 'Edit', edit_item_path(item),class:'btn btn-sm btn-outline-primary'%>
+      <%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' },class:'btn btn-sm btn-outline-danger' %>
     </div>
     <div>
         <p class="text-dark">Amount: <%= item.amount %></p>
