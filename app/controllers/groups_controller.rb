@@ -19,8 +19,7 @@ class GroupsController < ApplicationController
   end
 
   # GET /groups/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /groups or /groups.json
   def create
@@ -54,17 +53,18 @@ class GroupsController < ApplicationController
   def destroy
     @group.destroy
     respond_to do |format|
-      format.html { redirect_to groups_url, notice: "Group was successfully destroyed." }
+      format.html { redirect_to groups_url, notice: 'Group was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   def correct_user
-    @group = current_user.groups.find_by(id:params[:id])
+    @group = current_user.groups.find_by(id: params[:id])
     redirect_to groups_path, notice: 'Your Are Not Authorized To Edit or Delete This group' if @group.nil?
   end
 
   private
+
   # Use callbacks to share common setup or constraints between actions.
   def set_group
     @group = Group.find(params[:id])
