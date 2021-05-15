@@ -1,6 +1,7 @@
 class GroupsController < ApplicationController
-  before_action :set_group, only: %i[ show edit update destroy ]
+  before_action :set_group, only: %i[show edit update destroy]
   before_action :authenticate_user!
+  before_action :correct_user, only: %i[edit destroy update]
 
   # GET /groups or /groups.json
   def index
@@ -56,6 +57,11 @@ class GroupsController < ApplicationController
       format.html { redirect_to groups_url, notice: "Group was successfully destroyed." }
       format.json { head :no_content }
     end
+  end
+
+  def correct_user
+    @group = current_user.groups.find_by(id:params[:id])
+    redirect_to groups_path, notice: 'Your Are Not Authorized To Edit or Delete This group' if @group.nil?
   end
 
   private

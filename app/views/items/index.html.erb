@@ -1,11 +1,10 @@
 <div class="shadow p-2 mb-3 bg-white rounded">
   <p class="text-muted">Gift credit: <%=counter(@items)%><p>
 </div>
-
-<div class="d-flex flex-row justify-content-center">
-  <div class=''>
+  <div class='container'>
+    <div class="col-lg-6 col-sm-11">
     <% @items.each do |item| %>
-      <div class="d-flex flex-row shadow p-3 mb-3 bg-white rounded">
+      <div class="d-flex flex-row justify-content-between shadow p-3 mb-3 bg-white rounded">
         <div>
           <%if item.group != nil%>
             <%=image_tag item.group.icon.variant(resize:'100x100!'),class: 'rounded-circle'  %>
@@ -16,8 +15,10 @@
         <div class="">
           <p class="text-muted"><%= item.name %></p>
           <p class="text-muted"><%= item.created_at %></p>
-          <%= link_to 'Edit', edit_item_path(item),class:'btn btn-sm btn-outline-primary'%>
-          <%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' },class:'btn btn-sm btn-outline-danger' %>
+          <%if current_user == item.user%>
+            <%= link_to 'Edit', edit_item_path(item),class:'btn btn-sm btn-outline-primary'%>
+            <%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' },class:'btn btn-sm btn-outline-danger' %>
+          <%end%>
         </div>
         <div>
             <p class="text-dark">Amount: <%= item.amount %></p>
@@ -26,4 +27,4 @@
     <%end%>
     <%= link_to 'New Item', new_item_path %>
   <div>
-</div>
+  </div>
