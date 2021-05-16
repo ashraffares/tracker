@@ -1,19 +1,19 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: %i[ show edit update destroy ]
+  before_action :set_item, only: %i[show edit update destroy]
   before_action :authenticate_user!
+  before_action :correct_user, only: %i[edit update destroy]
   # GET /items or /items.json
   def index
-    @items = current_user.items.all.order('created_at DESC')
+    @items = current_user.items.where.not(group_id: nil).includes(:group, :user).all.order('created_at DESC')
   end
 
   def external
-    @items = current_user.items.where(group_id: nil).all.order('created_at DESC')
+    @items = current_user.items.where(group_id: nil).includes(:group, :user).order('created_at DESC')
     render :index
   end
 
   # GET /items/1 or /items/1.json
-  def show
-  end
+  def show; end
 
   # GET /items/new
   def new
@@ -21,19 +21,18 @@ class ItemsController < ApplicationController
   end
 
   # GET /items/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /items or /items.json
   def create
     @item = current_user.items.build(item_params)
     respond_to do |format|
       if @item.save
-        format.html { redirect_to @item, notice: 'Item was successfully created.' }
+        format.html { redirect_to items_path, notice: 'Item was successfully created.' }
         format.json { render :show, status: :created, location: @item }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @item.errors, status: :unprocessable_entity }
+        format.json { render json: items_path.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -42,11 +41,11 @@ class ItemsController < ApplicationController
   def update
     respond_to do |format|
       if @item.update(item_params)
-        format.html { redirect_to @item, notice: 'Item was successfully updated.' }
+        format.html { redirect_to items_path, notice: 'Item was successfully updated.' }
         format.json { render :show, status: :ok, location: @item }
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @item.errors, status: :unprocessable_entity }
+        format.json { render json: items_path.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -55,12 +54,18 @@ class ItemsController < ApplicationController
   def destroy
     @item.destroy
     respond_to do |format|
-      format.html { redirect_to items_url, notice: "Item was successfully destroyed." }
+      format.html { redirect_to items_url, notice: 'Item was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
+  def correct_user
+    @items = current_user.items.find_by(id: params[:id])
+    redirect_to items_path, notice: 'Your Are Not Authorized To Edit or Delete This Item' if @items.nil?
+  end
+
   private
+
   # Use callbacks to share common setup or constraints between actions.
   def set_item
     @item = Item.find(params[:id])

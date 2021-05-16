@@ -1,5 +1,7 @@
-<h1>New Item</h1>
-
-<%= render 'form', item: @item %>
-
+<div class="card">
+    <div class="card-header">
+        <h4>New Item</h4>
+    </div>
+    <%= render 'form', item: @item %>
+</div>
 <%= link_to 'Back', items_path %>

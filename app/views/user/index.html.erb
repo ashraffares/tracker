@@ -1,4 +1,22 @@
 
-<%= link_to 'All transiction', items_path %>
-<%= link_to 'all groups', groups_path %>
-<%= link_to 'external transiction', item_external_path(@items)%>
+<div class="container bg-white mx-auto my-2 shadow ">
+    <div class="row">
+        <div class="col-lg-6 col-sm-12">
+            <p class="text-center text-muted">Group by name</p>
+            <%= pie_chart current_user.groups.group(:name).count%>
+        </div>
+        <div class="col-lg-6 col-sm-12">
+            <p class="text-center text-muted">Items by name</p>
+            <%= pie_chart current_user.items.group(:name).count%>
+        </div>
+    </div>
+</div>
+<div class="container bg-white mx-auto my-4 shadow ">
+   <div class="row">
+        <div class="col-sm-12 ">
+            <p class="text-center text-muted">Items by date</p>
+            <%= column_chart current_user.items.group_by_day_of_week(:created_at).count%>
+        </div>
+    </div>
+
+</div>

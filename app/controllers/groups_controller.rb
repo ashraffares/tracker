@@ -1,14 +1,16 @@
 class GroupsController < ApplicationController
-  before_action :set_group, only: %i[ show edit update destroy ]
+  before_action :set_group, only: %i[show edit update destroy]
   before_action :authenticate_user!
+  before_action :correct_user, only: %i[edit destroy update]
 
   # GET /groups or /groups.json
   def index
-    @groups = Group.all.order(:name)
+    @groups = Group.includes(:user, :icon_attachment).order(:name)
   end
 
   # GET /groups/1 or /groups/1.json
   def show
+    @group_items = Item.where(group_id: params[:id]).all
   end
 
   # GET /groups/new
@@ -17,8 +19,7 @@ class GroupsController < ApplicationController
   end
 
   # GET /groups/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /groups or /groups.json
   def create
@@ -26,11 +27,11 @@ class GroupsController < ApplicationController
 
     respond_to do |format|
       if @group.save
-        format.html { redirect_to @group, notice: 'Group was successfully created.' }
+        format.html { redirect_to groups_path, notice: 'Group was successfully created.' }
         format.json { render :show, status: :created, location: @group }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @group.errors, status: :unprocessable_entity }
+        format.json { render json: groups_path.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -39,11 +40,11 @@ class GroupsController < ApplicationController
   def update
     respond_to do |format|
       if @group.update(group_params)
-        format.html { redirect_to @group, notice: 'Group was successfully updated.' }
+        format.html { redirect_to groups_path, notice: 'Group was successfully updated.' }
         format.json { render :show, status: :ok, location: @group }
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @group.errors, status: :unprocessable_entity }
+        format.json { render json: groups_path.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -52,12 +53,18 @@ class GroupsController < ApplicationController
   def destroy
     @group.destroy
     respond_to do |format|
-      format.html { redirect_to groups_url, notice: "Group was successfully destroyed." }
+      format.html { redirect_to groups_url, notice: 'Group was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
+  def correct_user
+    @group = current_user.groups.find_by(id: params[:id])
+    redirect_to groups_path, notice: 'Your Are Not Authorized To Edit or Delete This group' if @group.nil?
+  end
+
   private
+
   # Use callbacks to share common setup or constraints between actions.
   def set_group
     @group = Group.find(params[:id])

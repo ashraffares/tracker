@@ -1,31 +1,21 @@
-<h1>Groups</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Icon</th>
-      <th>User</th>
-      <th>Time</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
+  <div class='container'>
+  <div class="col-lg-5 col-sm-11">
     <% @groups.each do |group| %>
-      <tr>
-        <td><%= group.name %></td>
-        <td><%=image_tag(group.icon) %></td>
-        <td><%= group.user_id %></td>
-        <td><%= group.created_at %></td>
-        <td><%= link_to 'Show', group %></td>
-        <td><%= link_to 'Edit', edit_group_path(group) %></td>
-        <td><%= link_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
+      <div class="d-flex flex-row justify-content-around shadow p-3 mb-3 bg-white rounded ">
+        <div>
+          <%=image_tag group.icon.variant(resize:'100x100!'),class: 'rounded-circle' %>
+        </div>
+        <div>
+          <p class="text-muted"><%= group.name %></p>
+          <p class="text-muted"><%= group.created_at %></p>
+           <%= link_to 'group_items', group_path(group),class:'btn btn-sm btn-outline-info'%>
+          <%if current_user == group.user%>
+            <%= link_to 'Edit', edit_group_path(group),class:'btn btn-sm btn-outline-primary'%>
+            <%= link_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure?' },class:'btn btn-sm btn-outline-danger' %>
+          <%end%>
+        </div>
+      </div>
+    <%end%>
+    </div>
+  </div>
 <%= link_to 'New Group', new_group_path %>
