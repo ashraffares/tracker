@@ -1,3 +1,4 @@
+# rubocop:disable Lint/ShadowingOuterLocalVariable
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -16,7 +17,6 @@ class User < ApplicationRecord
   def login
     @login || username || email
   end
-  # rubocop:disable Lint/ShadowingOuterLocalVariable
 
   def self.find_for_database_authentication(warden_conditions)
     conditions = warden_conditions.dup
@@ -27,9 +27,9 @@ class User < ApplicationRecord
       where(conditions.to_h).first
     end
   end
-  # rubocop:enable Lint/ShadowingOuterLocalVariable
 
   def validate_username
     errors.add(:username, :invalid) if User.where(email: username).exists?
   end
 end
+# rubocop:enable Lint/ShadowingOuterLocalVariable
