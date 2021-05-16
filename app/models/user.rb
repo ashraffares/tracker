@@ -1,4 +1,3 @@
-# rubocop:disable Lint/ShadowingOuterLocalVariable
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -32,4 +31,3 @@ class User < ApplicationRecord
     errors.add(:username, :invalid) if User.where(email: username).exists?
   end
 end
-# rubocop:enable Lint/ShadowingOuterLocalVariable
