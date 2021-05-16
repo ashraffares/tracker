@@ -1,4 +1,5 @@
 AllCops:
+  SuggestExtensions: false
   Exclude:
     - "db/**/*"
     - "bin/*" 
@@ -6,7 +7,7 @@ AllCops:
     - "Guardfile"
     - "Rakefile"
     - "node_modules/**/*"
-
+  
   DisplayCopNames: true
 
 Layout/LineLength:
