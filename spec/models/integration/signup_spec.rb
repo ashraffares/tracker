@@ -28,12 +28,6 @@ feature 'Visitor sign up' do
     expect(page).to have_content('Sign up')
   end
 
-  scenario 'with wrong confirmation password' do
-    sign_up_with 'fares', 'fares@gmail.com', '000000', '000001'
-
-    expect(page).to have_content('Sign up')
-  end
-
   def sign_up_with(username, email, password, confirmation)
     visit new_user_registration_path
     fill_in 'Username', with: username
