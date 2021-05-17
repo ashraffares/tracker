@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'user#index'
+  root 'home#index'
   resources :items do
     get "external"
   end
