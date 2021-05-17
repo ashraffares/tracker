@@ -14,7 +14,14 @@
   <body>
     <%=render 'home/nav'%>
     <%if notice%>
-      <%=render 'home/alert'%>
+      <div class="alert alert-warning" role="alert">
+        <%=notice%>
+      </div>
+    <%end%>
+    <%if alert%>
+      <div class="alert alert-warning" role="alert">
+        <%=alert%>
+      </div>
     <%end%>
     <%= yield %>
   </body>
