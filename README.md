@@ -68,7 +68,7 @@ Open `http://localhost:3000/` in your browser.
 
 ```
     rspec --format documentation
-``
+```
 
 ## Authors
 
