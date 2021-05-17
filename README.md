@@ -7,8 +7,8 @@
 
 ## Built With
 
-- Ruby v2.7.0
-- Ruby on Rails v5.2.4
+- Ruby v3.0.0
+- Ruby on Rails v6.1.3
 - RSpec
 
 ## Live Demo
@@ -25,8 +25,8 @@ To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
-Ruby: 2.7.0
-Rails: 5.2.3
+Ruby: 3.0.0
+Rails: 6.1.3
 Postgres: >=9.5
 
 ### Setup
