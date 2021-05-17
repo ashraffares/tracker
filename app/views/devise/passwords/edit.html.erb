@@ -20,8 +20,8 @@
         <%= f.password_field :password_confirmation, autocomplete: "new-password",class:'form-control' %>
       </div>
 
-      <div class="actions">
-        <%= f.submit "Change my password",class:'btn btn-color btn-lg btn-block form-control text-light' %>
+      <div class="field btn-color p-2">
+        <%= f.submit "Change my password",class:'btn border btn-block form-control text-light' %>
       </div>
     <% end %>
     <%= render "devise/shared/links" %>
