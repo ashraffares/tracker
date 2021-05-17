@@ -36,7 +36,7 @@ class ItemsController < ApplicationController
   # PATCH/PUT /items/1 or /items/1.json
   def update
     if @item.update(item_params)
-      redirect_to items_path, notice: 'Item was successfully updated.' 
+      redirect_to items_path, notice: 'Item was successfully updated.'
     else
       render :edit, notice: 'Something went wrong try again.'
     end
