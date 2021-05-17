@@ -1,6 +1,6 @@
 # The List
 
-> this Project is about grouping transaction and display all groups - all transation - all external transation that the user created and display chart at the home page based on the groups - transactions by name and transaction by date.
+> this Project is about grouping transactions and displaying all groups - all transactions - all external transactions that the user created and display chart at the home page based on the groups - transactions by name and transaction by date.
 
 ![Tracker heroku (1)](https://user-images.githubusercontent.com/37639594/118451027-19248a80-b6f5-11eb-9b5a-97f2d255a5ec.png)
 ![Tracker heroku](https://user-images.githubusercontent.com/37639594/118451033-1a55b780-b6f5-11eb-8c8e-90362307a156.png)
