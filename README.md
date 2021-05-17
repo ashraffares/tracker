@@ -31,6 +31,8 @@ Postgres: >=9.5
 
 ### Setup
 
+run yarn install or rails webpacker:install 
+
 Instal gems with:
 
 ```
