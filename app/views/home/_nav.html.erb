@@ -14,7 +14,7 @@
       </ul>
       <div class="d-flex navbar-nav">
         <%if user_signed_in?%>
-            <%= link_to current_user.username, edit_user_registration_path,class:'nav-link text-light'%>
+            <%= link_to current_user.username, edit_user_registration_path,method: :get,class:'nav-link text-light'%>
             <%= link_to 'Sign Out', destroy_user_session_path,method: :delete,data: {confirm:'Are you sure?'},class:'nav-link text-light'%>
         <%else%>
             <%= link_to 'Sign In', new_user_session_path,class:'nav-link text-light'%>
