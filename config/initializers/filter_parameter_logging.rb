@@ -1,4 +1,4 @@
-# Be sure to restart your server when you modify this file.
+git remote add origin <URL to new heroku app># Be sure to restart your server when you modify this file.
 
 # Configure sensitive parameters which will be filtered from the log file.
 Rails.application.config.filter_parameters += [
