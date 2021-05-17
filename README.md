@@ -1,4 +1,4 @@
-# The List
+# Track expenses
 
 > this Project is about grouping transactions and displaying all groups - all transactions - all external transactions that the user created and display chart at the home page based on the groups - transactions by name and transaction by date.
 
