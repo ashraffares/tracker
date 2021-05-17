@@ -1,10 +1,9 @@
 <div class="shadow p-2 mb-2 bg-white rounded">
   <p class="text-muted">Gift credit: <%=counter(@items)%><p>
 </div>
-  <div class=''>
-    <div class="col-lg-6 col-sm-11">
+    <div class="col-lg-5 col-sm-11">
     <% @items.each do |item| %>
-      <div class="d-flex flex-row justify-content-between shadow p-2 mb-1 bg-white rounded">
+      <div class="d-flex flex-row justify-content-between shadow p-2 mb-1 bg-white rounded m-lr">
         <div>
           <%if item.group != nil%>
             <%=image_tag item.group.icon.variant(resize:'100x100!'),class: 'rounded-circle'  %>
@@ -31,4 +30,3 @@
       </div>
     </div>
   <div>
-  </div>

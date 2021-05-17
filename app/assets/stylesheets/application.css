@@ -24,3 +24,8 @@ body {
 .btn-color {
   background-color: #5fb523;
 }
+
+.m-lr {
+  margin-left: 10px;
+  margin-right: 10px;
+}
