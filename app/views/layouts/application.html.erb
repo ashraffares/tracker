@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Tracker heroku</title>
+    <title>Tracker</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -12,9 +12,16 @@
   </head>
 
   <body>
-    <%=render 'user/nav'%>
+    <%=render 'home/nav'%>
     <%if notice%>
-      <%=render 'user/alert'%>
+      <div class="alert alert-warning" role="alert">
+        <%=notice%>
+      </div>
+    <%end%>
+    <%if alert%>
+      <div class="alert alert-warning" role="alert">
+        <%=alert%>
+      </div>
     <%end%>
     <%= yield %>
   </body>

@@ -1,11 +1,10 @@
-<div class="card">
+<div class="container card">
   <div class="card-header">
     <h4>Edit <%= resource_name.to_s.humanize %></h4>
   </div>
   <div class="card-body">
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
-
     <div class="row">
       <div class="col-sm-4">
         <%if resource.avatar.attached?%>
@@ -53,8 +52,8 @@
       <%= f.password_field :current_password, autocomplete: "current-password",class:'form-control' %>
     </div>
 
-    <div class="actions">
-      <%= f.submit "Update",class:'btn btn-primary my-2'%>
+    <div class="field btn-color mt-1">
+      <%= f.submit "Update",class:'btn my-2 border btn-block form-control text-light'%>
     </div>
   <% end %>
 
